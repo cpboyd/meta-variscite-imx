@@ -8,3 +8,9 @@ do_compile_prepend() {
           cp ${DEPLOY_DIR_IMAGE}/${BOOT_TOOLS}/fsl-imx8mm-var-dart.dtb ${S}/iMX8M/fsl-imx8mm-evk.dtb
         fi
 }
+
+do_deploy_append() {
+    cd ${DEPLOYDIR}
+    ln -sf ${BOOT_CONFIG_MACHINE}-${IMAGE_IMXBOOT_TARGET} ${BOOT_CONFIG_MACHINE}
+    cd -
+}
